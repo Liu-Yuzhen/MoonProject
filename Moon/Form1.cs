@@ -201,7 +201,12 @@ namespace Moon
                 solver.addObserver(labbar);
 
                 button1.Enabled = false;
+
+                TimeSpan t1 = new TimeSpan(DateTime.Now.Ticks);
                 bitmaps = solver.simulate(times, t0, dt, thrd, maxiteration);
+                TimeSpan t2 = new TimeSpan(DateTime.Now.Ticks);
+
+                label1.Text = string.Format("Time cost is {0} seconds.", (t2-t1).Seconds);
                 buttonDisp.Enabled = true;
                 button1.Enabled = true;
             }
