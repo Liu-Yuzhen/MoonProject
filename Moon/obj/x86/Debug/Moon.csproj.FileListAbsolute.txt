@@ -1,0 +1,13 @@
+C:\Users\23792\Desktop\C#\Moon\Moon\bin\x86\Debug\Moon.exe.config
+C:\Users\23792\Desktop\C#\Moon\Moon\bin\x86\Debug\Moon.exe
+C:\Users\23792\Desktop\C#\Moon\Moon\bin\x86\Debug\Moon.pdb
+C:\Users\23792\Desktop\C#\Moon\Moon\bin\x86\Debug\gdal_csharp.dll
+C:\Users\23792\Desktop\C#\Moon\Moon\bin\x86\Debug\ogr_csharp.dll
+C:\Users\23792\Desktop\C#\Moon\Moon\bin\x86\Debug\osr_csharp.dll
+C:\Users\23792\Desktop\C#\Moon\Moon\obj\x86\Debug\Moon.Form1.resources
+C:\Users\23792\Desktop\C#\Moon\Moon\obj\x86\Debug\Moon.Properties.Resources.resources
+C:\Users\23792\Desktop\C#\Moon\Moon\obj\x86\Debug\Moon.csproj.GenerateResource.cache
+C:\Users\23792\Desktop\C#\Moon\Moon\obj\x86\Debug\Moon.csproj.CoreCompileInputs.cache
+C:\Users\23792\Desktop\C#\Moon\Moon\obj\x86\Debug\Moon.csproj.CopyComplete
+C:\Users\23792\Desktop\C#\Moon\Moon\obj\x86\Debug\Moon.exe
+C:\Users\23792\Desktop\C#\Moon\Moon\obj\x86\Debug\Moon.pdb
