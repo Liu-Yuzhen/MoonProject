@@ -34,6 +34,7 @@ namespace Moon
             this.moonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orbitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cameraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -53,7 +54,6 @@ namespace Moon
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,23 +81,30 @@ namespace Moon
             // moonToolStripMenuItem
             // 
             this.moonToolStripMenuItem.Name = "moonToolStripMenuItem";
-            this.moonToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.moonToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.moonToolStripMenuItem.Text = "Moon";
             this.moonToolStripMenuItem.Click += new System.EventHandler(this.moonToolStripMenuItem_Click);
             // 
             // orbitToolStripMenuItem
             // 
             this.orbitToolStripMenuItem.Name = "orbitToolStripMenuItem";
-            this.orbitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.orbitToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.orbitToolStripMenuItem.Text = "Orbit";
             this.orbitToolStripMenuItem.Click += new System.EventHandler(this.orbitToolStripMenuItem_Click);
             // 
             // cameraToolStripMenuItem
             // 
             this.cameraToolStripMenuItem.Name = "cameraToolStripMenuItem";
-            this.cameraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cameraToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.cameraToolStripMenuItem.Text = "Camera";
             this.cameraToolStripMenuItem.Click += new System.EventHandler(this.cameraToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // progressBar1
             // 
@@ -273,13 +280,6 @@ namespace Moon
             this.textBox4.TabIndex = 36;
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
-            this.helpToolStripMenuItem.Text = "Help";
-            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -307,7 +307,7 @@ namespace Moon
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Form";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
             this.menuStrip1.ResumeLayout(false);
