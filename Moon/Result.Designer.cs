@@ -81,6 +81,7 @@ namespace Moon
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Result";
             this.Text = "Result";
+            this.Load += new System.EventHandler(this.Result_Load);
             this.Resize += new System.EventHandler(this.Result_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using liuyuzhen.Observer;
 using System.Windows.Forms;
+using Moon;
 
 namespace liuyuzhen
 {
@@ -34,19 +35,19 @@ namespace liuyuzhen
         // times: exposure times,
         // t0: time to start expose
         // dt: interval between exposures
-        public Bitmap[] simulate(int times, double t0, double dt, double threshold = 5, int maxiteration=10)
+        public void simulate(Bitmap[] bitmaps, int times, double t0, double dt, double threshold = 5, int maxiteration=10)
         {
             int count = _camera.count();
+            /*
             Bitmap[] bitmaps = new Bitmap[count];
-
-            Color black = Color.Black;
-
             for (int i=0;i< count; i++)
             {
                 Bitmap btm = new Bitmap(_camera.width(), times);
                 bitmaps[i] = btm;
             }
+            */
 
+            Color black = Color.Black;
 
             double f = _camera.principalDistance();
 
@@ -65,8 +66,7 @@ namespace liuyuzhen
 
                 Point moonCenter = moon2cam * orig;
 
-                
-
+                // moon's center in camera's coordinate system
                 double X0 = moonCenter.x;
                 double Y0 = moonCenter.y;
                 double Z0 = moonCenter.z;
@@ -123,12 +123,6 @@ namespace liuyuzhen
                                 bestPt = interMoon;
                             }
 
-                            if (Math.Abs(dif) < threshold)
-                            {
-                                //Console.WriteLine("iteration times = {0}, difference = {1}", k+1, dif);
-
-                                break;
-                            }
 
                             tempR = nextR(tempR, difMin);
                         }
@@ -149,7 +143,6 @@ namespace liuyuzhen
             }
 
 
-            return bitmaps;
         }
 
         public void notify(int total, int row)
@@ -159,6 +152,7 @@ namespace liuyuzhen
                 o.exec(total, row);
             }
         }
+
         public double nextR(double R, double dif)
         {
             return R + dif;
@@ -361,6 +355,7 @@ namespace liuyuzhen
             _DEMpro2raster[5] = transDEM[3];
 
         }
+
         // only appropriate for *spheroid* moon
         // from 3D Cartesian coordinate system(measured in X,Y,Z) to 
         // Geographic coordinate system(measured in B,L,H)
@@ -378,7 +373,6 @@ namespace liuyuzhen
         {
             return threeD2geo(pt.x, pt.y, pt.z);
         }
-
 
 
         // from projection to raster(measured in row and col)
@@ -499,6 +493,7 @@ namespace liuyuzhen
             return z;
         }
     }
+
     public class Orbit
     {
         private double _a, _e, _i, _Omega, _w, _n, _t0;
@@ -535,7 +530,6 @@ namespace liuyuzhen
             //(factor * res).show();
             return factor*res;
         }
-
         
         // Newton descent method
         // mean anomaly to eccentric anomaly
@@ -604,6 +598,7 @@ namespace liuyuzhen
         {
             return _pd;
         }
+
         // given u(pix) return frontxy,midxy,backxy
         public double[,] getXY(int u)
         {
@@ -1153,6 +1148,26 @@ namespace liuyuzhen
             public override void exec(int total, int row)
             {
                 _bar.Value = 100 * row / total;
+            }
+        }
+
+        public class ImageObserver: IObserver
+        {
+
+            Result[] results;
+            Bitmap[] bitmaps;
+            public ImageObserver(Bitmap[] bitmaps, Result[] results)
+            {
+                this.results = results;
+                this.bitmaps = bitmaps;
+            }
+            public override void exec(int total, int row)
+            {
+                if (row % 5 == 0)
+                {
+                    for (int i = 0; i < results.Length; i++)
+                        results[i].updateImage(bitmaps[i]);
+                }
             }
         }
     }

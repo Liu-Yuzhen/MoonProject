@@ -13,12 +13,14 @@ namespace Moon
     public partial class Result : Form
     {
         Bitmap bitmap;
-        public Result(Bitmap bitmap)
+        public Result(ref Bitmap bitmap, Point pt)
         {
             InitializeComponent();
             this.bitmap = bitmap;
             pictureBox1.Image = new Bitmap(bitmap);
 
+            this.Location = pt;
+            this.StartPosition = FormStartPosition.Manual;
             updateSize();
         }
 
@@ -37,6 +39,12 @@ namespace Moon
             }
         }
 
+        public void updateImage(Bitmap img)
+        {
+            pictureBox1.Image = img;
+            pictureBox1.Refresh();
+        }
+
         private void updateSize()
         {
 
@@ -50,6 +58,11 @@ namespace Moon
         private void Result_Resize(object sender, EventArgs e)
         {
             updateSize();
+        }
+
+        private void Result_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -38,7 +38,6 @@ namespace Moon
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.buttonDisp = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -125,24 +124,13 @@ namespace Moon
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("宋体", 11F);
-            this.button1.Location = new System.Drawing.Point(189, 247);
+            this.button1.Location = new System.Drawing.Point(298, 246);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 43);
             this.button1.TabIndex = 3;
             this.button1.Text = "Generate";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // buttonDisp
-            // 
-            this.buttonDisp.Font = new System.Drawing.Font("宋体", 11F);
-            this.buttonDisp.Location = new System.Drawing.Point(367, 247);
-            this.buttonDisp.Name = "buttonDisp";
-            this.buttonDisp.Size = new System.Drawing.Size(123, 43);
-            this.buttonDisp.TabIndex = 4;
-            this.buttonDisp.Text = "Display";
-            this.buttonDisp.UseVisualStyleBackColor = true;
-            this.buttonDisp.Click += new System.EventHandler(this.buttonDisp_Click);
             // 
             // label2
             // 
@@ -300,7 +288,6 @@ namespace Moon
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.buttonDisp);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
@@ -324,7 +311,6 @@ namespace Moon
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem settingToolStripMenuItem;
-        private System.Windows.Forms.Button buttonDisp;
         private System.Windows.Forms.ToolStripMenuItem moonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orbitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cameraToolStripMenuItem;

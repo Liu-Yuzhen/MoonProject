@@ -24,7 +24,6 @@ namespace Moon
             Gdal.AllRegister();
             CheckForIllegalCrossThreadCalls = false;
 
-            buttonDisp.Enabled = false;
 
             int x = (System.Windows.Forms.SystemInformation.WorkingArea.Width / 2 - this.Size.Width / 2);
             int y = (System.Windows.Forms.SystemInformation.WorkingArea.Height / 2 - this.Size.Height / 2);
@@ -41,6 +40,7 @@ namespace Moon
 
         }
 
+        Result[] results;
         Bitmap[] bitmaps;
         liuyuzhen.Moon _moon;
         Orbit _orbit;
@@ -50,11 +50,20 @@ namespace Moon
         bool _moonSet = false;
         bool _camSet = false;
 
+        double dt;
+        int times;
+        double t0;
+        double thrd;
+        int maxiteration;
+
+
         string help = "*Exposure times* also mean the height of the image\n" +
             "*Threshold* determines when to stop iteration.\n" +
             "*Max Iteration* is the maximum number of iterations.\n\n" +
             "If you are not sure, use the default value.";
+
         // rubish  just for test
+        /*
         private void simulate()
         {
             Dataset DEM = Gdal.Open(@"D:\刘雨臻\全月\DEM\Lunar_LRO_LOLA_Global_LDEM_118m_Mar2014.tif", Access.GA_ReadOnly);
@@ -100,18 +109,18 @@ namespace Moon
             double dt = 200/v;
 
             button1.Enabled = false;
-            buttonDisp.Enabled = false;
+
 			
 			TimeSpan t1 = new TimeSpan(DateTime.Now.Ticks);
-            bitmaps = solver.simulate(height, tStart, dt, 5, 5);
+            bitmaps = solver.simulate(bitmaps, height, tStart, dt, 5, 5);
 			TimeSpan t2 = new TimeSpan(DateTime.Now.Ticks);
 			label1.Text = string.Format("Time cost is {0} seconds.", (t2-t1
 ).Seconds);
 
-            buttonDisp.Enabled = true;
+
             button1.Enabled = true;
         }
-
+        */
         private void refreshLayout()
         {
             label1.Left = 20;
@@ -143,10 +152,63 @@ namespace Moon
             label1.Text = "Camera set";
         }
 
-
+        private void clear()
+        {
+            if (bitmaps != null)
+            {
+                for (int i = 0; i < bitmaps.Length; i++)
+                {
+                    bitmaps[i].Dispose();
+                    results[i].Dispose();
+                }
+            }
+            
+            bitmaps = null;
+            results = null;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!_moonSet)
+            {
+                MessageBox.Show("Please set DOM and DEM in \"Setting\" -> \"Moon\" ");
+                return;
+            }
+            if (!_camSet)
+            {
+                MessageBox.Show("Please set camera parameters in \"Setting\" -> \"Camera\" ");
+                return;
+            }
+            if (!_orbSet)
+            {
+                MessageBox.Show("Please set orbital parameters in \"Setting\" -> \"Orbit\" ");
+                return;
+            }
+
+            dt = double.Parse(textBox1.Text);
+            times = int.Parse(textBox2.Text);
+            t0 = double.Parse(textBox7.Text) * 3600 +
+                double.Parse(textBox8.Text) * 60 +
+                double.Parse(textBox9.Text);
+            thrd = double.Parse(textBox3.Text);
+            maxiteration = int.Parse(textBox4.Text);
+
+            clear();
+            results = new Result[_camera.count()];
+            bitmaps = new Bitmap[_camera.count()];
+
+            Rectangle rec = System.Windows.Forms.Screen.GetWorkingArea(this);
+            for (int i = 0; i < _camera.count(); i++)
+            {
+                Bitmap btm = new Bitmap(_camera.width(), times);
+                bitmaps[i] = btm;
+                Result result = new Result(ref btm, 
+                    new System.Drawing.Point(563 * i % rec.Width, 300));
+                result.Show();
+                results[i] = result;
+            }
+            //for () -----------------------------------------------------------------------
+
             Thread thread = new Thread(generate);
             thread.IsBackground = true;
             thread.Start();
@@ -170,50 +232,38 @@ namespace Moon
 
         private void generate()
         {
-            if (!_moonSet)
-            {
-                MessageBox.Show("Please set DOM and DEM in \"Setting\" -> \"Moon\" ");
-                return;
-            }
-            if (!_camSet)
-            {
-                MessageBox.Show("Please set camera parameters in \"Setting\" -> \"Camera\" ");
-                return;
-            }
-            if (!_orbSet)
-            {
-                MessageBox.Show("Please set orbital parameters in \"Setting\" -> \"Orbit\" ");
-                return;
-            }
+
 
             try
             {
-                double dt = double.Parse(textBox1.Text);
-                int times = int.Parse(textBox2.Text);
-                double t0 = double.Parse(textBox7.Text) * 3600 +
-                    double.Parse(textBox8.Text) * 60 +
-                    double.Parse(textBox9.Text);
-                double thrd = double.Parse(textBox3.Text);
-                int maxiteration = int.Parse(textBox4.Text);
+
                 Solver solver = new Solver(_moon, _camera, _orbit);
 
                 // observer pattern  
                 // used to update statusbar and label 
-                liuyuzhen.Observer.IObserver prg = new liuyuzhen.Observer.ProgressbarObserver(progressBar1);
-                liuyuzhen.Observer.IObserver labbar = new liuyuzhen.Observer.StatusbarObserver(label1);
+                liuyuzhen.Observer.IObserver prg = 
+                    new liuyuzhen.Observer.ProgressbarObserver(progressBar1);
+
+                liuyuzhen.Observer.IObserver labbar =
+                    new liuyuzhen.Observer.StatusbarObserver(label1);
+
+                liuyuzhen.Observer.IObserver imgObsever = 
+                    new liuyuzhen.Observer.ImageObserver(bitmaps, results);
 
                 solver.addObserver(prg);
                 solver.addObserver(labbar);
+                solver.addObserver(imgObsever);
 
                 button1.Enabled = false;
 
                 TimeSpan t1 = new TimeSpan(DateTime.Now.Ticks);
-                bitmaps = solver.simulate(times, t0, dt, thrd, maxiteration);
+                solver.simulate(bitmaps, times, t0, dt, thrd, maxiteration);
                 TimeSpan t2 = new TimeSpan(DateTime.Now.Ticks);
 
                 label1.Text = string.Format("Time cost is {0} seconds.", (t2-t1).Seconds);
-                buttonDisp.Enabled = true;
                 button1.Enabled = true;
+
+
             }
             catch(Exception ex)
             {
@@ -223,17 +273,17 @@ namespace Moon
         }
 
 
-        private void buttonDisp_Click(object sender, EventArgs e)
-        {
-            if (bitmaps != null)
-            {
-                for (int i=0;i<bitmaps.GetLength(0);i++)
-                {
-                    Result result = new Result(bitmaps[i]);
-                    result.Show();
-                }
-            }
-        }
+        //private void buttonDisp_Click(object sender, EventArgs e)
+        //{
+        //    if (bitmaps != null)
+        //    {
+        //        for (int i=0;i<bitmaps.GetLength(0);i++)
+        //        {
+        //            Result result = new Result(bitmaps[i]);
+        //            result.Show();
+        //        }
+        //    }
+        //}
 
         private void orbitToolStripMenuItem_Click(object sender, EventArgs e)
         {
