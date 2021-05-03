@@ -6,13 +6,6 @@
 
 
 
-## Dependencies
-
-- GDAL
-
-
-
-
 
 ## How to use?
 
@@ -27,6 +20,9 @@
 
 
 
+## Dependencies
+
+- GDAL
 
 
 ## Demo
@@ -62,6 +58,8 @@
 
 - front lens(23.5°)
 <img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/front.jpg" style="transform:rotate(90deg);" div align=center />
+
+
 
 
 - middle lens(0°)
