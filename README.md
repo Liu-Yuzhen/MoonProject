@@ -34,42 +34,42 @@
 ### Interface
 
 - main interface
-<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/image-20210503201617480.png" style="transform:rotate(90deg);">
+<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/image-20210503201617480.png"  div align=center />
 
 
 
 
 - moon dataset
-<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/image-20210503201854420.png" style="transform:rotate(90deg);">
+<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/image-20210503201854420.png"  div align=center />
 
 
 
 
 - orbit settings
-<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/image-20210503201928303.png" style="transform:rotate(90deg);">
+<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/image-20210503201928303.png"  div align=center />
 
 
 - camera settings
-<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/image-20210503201953342.png" style="transform:rotate(90deg);">
+<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/image-20210503201953342.png" div align=center />
+
 
 
 
 
 ### Result
-<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/image-20210503202234226.png" style="transform:rotate(90deg);">
-
+<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/image-20210503202234226.png" style="transform:rotate(90deg);" div align=center />
 
 
 - front lens(23.5°)
-<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/front.png" style="transform:rotate(90deg);">
+<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/front.jpg" style="transform:rotate(90deg);" div align=center />
 
 
 - middle lens(0°)
-<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/mid.png" style="transform:rotate(90deg);" div align=center>
+<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/mid.jpg" style="transform:rotate(90deg);" div align=center />
 
 
 
 
 - back lens(-23.5°)
-<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/back.jpg" style="transform:rotate(90deg);">
+<img src="https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/back.jpg" style="transform:rotate(90deg);" div align=center />
 
