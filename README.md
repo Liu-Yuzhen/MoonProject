@@ -35,7 +35,7 @@
 
 - main interface
 
-![image-20210503201617480](https://github.com/Liu-Yuzhen/MoonProject/tree/master/pic/image-20210503201617480.png)
+![image-20210503201617480](https://github.com/Liu-Yuzhen/MoonProject/blob/master/pic/image-20210503201617480.png)
 
 
 
