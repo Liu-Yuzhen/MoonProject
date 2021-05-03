@@ -17,9 +17,9 @@
 ## How to use?
 
 1.  **Set the parameters(or dataset) below:**
-   - Orbit(Kepler elements)
-   - Camera(CCD camera)
-   - Moon(DOM  and DEM)
+   - Orbit(Kepler elements).
+   - Camera(CCD camera). You can add as many cameras as you want.
+   - Moon(DOM  and DEM). 
 
 ​	
 
@@ -35,42 +35,42 @@
 
 - main interface
 
-![image-20210503201617480](C:\Users\23792\AppData\Roaming\Typora\typora-user-images\image-20210503201617480.png)
+![image-20210503201617480](https://github.com/Liu-Yuzhen/MoonProject/tree/master/pic/image-20210503201617480.png)
 
 
 
 - moon dataset
 
-![image-20210503201854420](C:\Users\23792\AppData\Roaming\Typora\typora-user-images\image-20210503201854420.png)
+![image-20210503201854420](https://github.com/Liu-Yuzhen/MoonProject/tree/master/pic/image-20210503201854420.png)
 
 
 
 - orbit settings
 
-  ![image-20210503201928303](C:\Users\23792\AppData\Roaming\Typora\typora-user-images\image-20210503201928303.png)
+  ![image-20210503201928303](https://github.com/Liu-Yuzhen/MoonProject/tree/master/pic/image-20210503201928303.png)
 
 - camera settings
 
-  ![image-20210503201953342](C:\Users\23792\AppData\Roaming\Typora\typora-user-images\image-20210503201953342.png)
+  ![image-20210503201953342](https://github.com/Liu-Yuzhen/MoonProject/tree/master/pic/image-20210503201953342.png)
 
 
 
 ### Result
 
-![image-20210503202234226](C:\Users\23792\AppData\Roaming\Typora\typora-user-images\image-20210503202234226.png)
+![image-20210503202234226](https://github.com/Liu-Yuzhen/MoonProject/tree/master/pic/image-20210503202234226.png)
 
 
 
 - front lens(23.5°)
 
-![front](C:\Users\23792\Desktop\C#\Moon\pic\front.jpg)
+![front](https://github.com/Liu-Yuzhen/MoonProject/tree/master/pic/front.jpg)
 
 - middle lens(0°)
 
-![mid](C:\Users\23792\Desktop\C#\Moon\pic\mid.jpg)
+![mid](https://github.com/Liu-Yuzhen/MoonProject/tree/master/pic/mid.jpg)
 
 
 
 - back lens(-23.5°)
 
-![back](C:\Users\23792\Desktop\C#\Moon\pic\back.jpg)
+![back](https://github.com/Liu-Yuzhen/MoonProject/tree/master/pic/back.jpg)
